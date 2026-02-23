@@ -1,30 +1,17 @@
-# Last updated: 2/12/2026, 3:45:34 PM
-class Solution:
-    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
-        """
-        Do not return anything, modify nums1 in-place instead.
-        """
-        for index in range(m, m + n):
-            nums1[index] = nums2[index - m]
-        nums1[:] = Solution.mergeSort(nums1)
-        
-    def mergeSort(array):
-        if len(array) <= 1:
-            return array
-        middle = len(array) // 2
-        left = array[:middle]
-        right = array [middle:]
-        sortedLeft = Solution.mergeSort(left)
-        sortedRight = Solution.mergeSort(right)
-        result = []
-        i = j = 0
-        while i < len(sortedLeft) and j < len(sortedRight):
-            if sortedLeft[i] < sortedRight[j]:
-                result.append(sortedLeft[i])
-                i += 1
-            else:
-                result.append(sortedRight[j])
-                j += 1
-        result.extend(sortedLeft[i:])
-        result.extend(sortedRight[j:])
-        return result
+# Last updated: 2/23/2026, 5:57:32 PM
+1class Solution:
+2    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+3        """
+4        Do not return anything, modify nums1 in-place instead.
+5        """
+6        nums1_length = m - 1
+7        nums2_length = n - 1
+8        right = m + n - 1
+9        while nums2_length >= 0:
+10            if nums1_length >= 0 and nums1[nums1_length] > nums2[nums2_length]:
+11                nums1[right] = nums1[nums1_length]
+12                nums1_length -= 1
+13            else:
+14                nums1[right] = nums2[nums2_length]
+15                nums2_length -= 1
+16            right -= 1
