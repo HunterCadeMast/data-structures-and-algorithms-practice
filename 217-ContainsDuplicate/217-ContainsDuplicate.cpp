@@ -1,14 +1,7 @@
-// Last updated: 2/12/2026, 3:45:30 PM
-class Solution {
-public:
-    bool containsDuplicate(vector<int>& nums) {
-        unordered_set<int> checkSet;
-        for(int num : nums) {
-            if (checkSet.count(num)) {
-                return true;
-            }
-            checkSet.insert(num);
-        }
-        return false;
-    }
-};
+// Last updated: 3/2/2026, 4:48:03 PM
+1class Solution {
+2public:
+3    bool containsDuplicate(vector<int>& nums) {
+4        return unordered_set<int>(nums.begin(), nums.end()).size() < nums.size();
+5    }
+6};
